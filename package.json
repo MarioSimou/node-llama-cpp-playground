@@ -1,0 +1,28 @@
+{
+  "name": "llama-cpp-playground",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "download:model":"curl -L https://huggingface.co/msimou/Qwen2-0.5B-Instruct-GGUF/resolve/main/Qwen2-0.5B-Instruct-Q8_0.gguf -o ./src/Qwen2-0.5B-Instruct-Q8_0.gguf",
+    "download:llama-cpp": "npx node-llama-cpp download --release b3465",
+    "download": "npm run download:model && npm run download:llama-cpp",
+    "start:dev": "tsx watch --tsconfig tsconfig.json --clear-screen=false ./src/server.ts",
+    "build": "tsc",
+    "build:docker": "docker build -t api -f ./Dockerfile ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "fastify": "^4.28.1",
+    "node-llama-cpp": "^2.8.14"
+  },
+  "engines": {
+    "node": "20.x"
+  }
+}
